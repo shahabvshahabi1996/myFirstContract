@@ -43,11 +43,11 @@ contract Coin {
         return _balanceOF[_address];
     }
     
-    function balanceOfOwner() public returns(uint value){
+    function balanceOfOwner() public returns(uint value) {
         return _balanceOF[_owner];
     }
     
-    function distOwnerBalance() public returns(bool success){
+    function distOwnerBalance() public returns(bool success) {
         _balanceOF[_owner] = 0;
         return true;
     }
