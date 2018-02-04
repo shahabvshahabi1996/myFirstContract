@@ -5,9 +5,9 @@ import "./safeMath.sol";
 
 contract Coin {
     using SafeMath for uint;
-    mapping(address => uint) public _balanceOF;
-    address public _owner;
-    uint public constant TOTAL_SUPPLY = 1000;
+    mapping(address => uint) private _balanceOF;
+    address private _owner;
+    uint private constant TOTAL_SUPPLY = 1000;
     event Sent(address _from, address _to, uint _value);
 
     function Coin() public {
@@ -41,5 +41,14 @@ contract Coin {
 
     function balanceOf(address _address) public returns(uint value) {
         return _balanceOF[_address];
+    }
+    
+    function balanceOfOwner() public returns(uint value){
+        return _balanceOF[_owner];
+    }
+    
+    function distOwnerBalance() public returns(bool success){
+        _balanceOF[_owner] = 0;
+        return true;
     }
 }
